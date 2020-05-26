@@ -1,4 +1,4 @@
-## Para compilar a extencao e copiar ela para o php e reiniciar o php e apache:
+## Para compilar a extensao e copiar ela para o php e reiniciar o apache:
 
 sudo make tudo
 
