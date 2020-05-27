@@ -1,12 +1,26 @@
-## Para compilar a extensao e copiar ela para o php e reiniciar o apache:
+## Instalacao da extensao:
 
-sudo make tudo
+`git clone https://github.com/billbarsch/acbrlibphp.git`
+
+`cd acbrlibphp`
+
+`sudo make tudo`
 
 
-## Log de erros do apache:
+## Este projeto requer a instalacao do PHP-CPP
 
-cat /var/log/apache2/error.log
+`sudo apt-get install php-dev`
 
+`git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git`
+
+`cd PHP-CPP`
+
+`make`
+
+`sudo make install`
+
+
+# Ajustes
 
 ## Para conseguir ler a dll pela extensao:
 
@@ -15,3 +29,10 @@ executar no terminal:
 `xhost +` 
 
 para liberar todos a se conectarem no x11
+
+
+# Util
+
+## Local do log de erros do apache:
+
+cat /var/log/apache2/error.log
