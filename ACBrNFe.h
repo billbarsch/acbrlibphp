@@ -32,7 +32,7 @@
 
 #define BUFFER_LEN 256
 
-class ACBrNFe {
+class ACBrNFe{
 private:
 #if defined(ISWINDOWS)
 	HMODULE nHandler;
@@ -49,6 +49,7 @@ public:
 	ACBrNFe() : ACBrNFe("", "") {}
 	~ACBrNFe();
 
-	std::string nome();
-	std::string versao();
+	std::string _NFE_Nome();
+	std::string _NFE_Versao();
+	std::int32_t _NFE_ConfigGravarValor(std::string eSessao, std::string eChave, std::string sValor);
 };

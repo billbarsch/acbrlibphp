@@ -1,82 +1,70 @@
-#include <phpcpp.h>
 #include <iostream>
 #include <dlfcn.h>
 #include <stdio.h>
-//#include "Acbrlibphp.h"
 #include <memory>
 #include "ACBrNFe.h"
+#include <phpcpp.h>
 
-void teste1()
+class AcbrLibPhp : public Php::Base
 {
-    std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>("/home/billbarsch/Desktop/testecpp/acbrlib.ini",""); 
-    Php::out << nfe->nome() + " " + nfe->versao() << "<br>" << std::endl;
-    //cout << nfe->nome() + " " + nfe->versao() << std::endl;
-}
-/*
-void teste1()
-{
-    Acbrlibphp AcbrlibClass;
+private:
+        std::shared_ptr<ACBrNFe> nfe;
 
-	string sucesso;
-	string erro;
-	string versao;
-	
-    versao = AcbrlibClass.NFE_Versao();
-	sucesso = AcbrlibClass.status;
-    erro = AcbrlibClass.error;
-    //versao = "laaaa";
-    //versao = error.c_str();
-    Php::out << "Sucesso:" << sucesso << "<br>" << std::endl;
-    Php::out << "Erro:" << erro << "<br>" << std::endl;
-    Php::out << "Versao:" << versao << "<br>" << std::endl;
+public:
+    /**
+     *  c++ constructor
+     */
+    AcbrLibPhp() = default;
 
-	//AcbrlibClass.NFE_ConfigGravarValor("NFe", "TimeOut", "7700");
-}
-*/
+    /**
+     *  c++ destructor
+     */
+    virtual ~AcbrLibPhp() = default;
 
-/*
-extern "C" typedef void (*hello_t)( const char* text );
+    /**
+     *  php "constructor"
+     *  @param  params
+     */
+    void __construct(Php::Parameters &params)
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
+        std::string eArqConfig = params[0];
+        std::string eChaveCrypt = params[1];
+        nfe = std::make_shared<ACBrNFe>(eArqConfig,eChaveCrypt);
+        // initialize a public property
+        //self["property1"] = "xyz";
+    }
+    
+    void nomeVersao()
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
 
-void teste()
-{
-    void* lib = dlopen("./libhello.so", RTLD_LAZY);
-    hello_t hello = (hello_t)dlsym( lib, "hello" );
+        // overwrite the property
+        //self["property1"] = "abc";
 
-    hello("World!");
+        Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
 
-    //Php::out << "terminou!" << std::endl;
-    //dlclose(lib);
-}
-*/
+    }
 
-void teste2()
-{
-    putenv("DISPLAY=:0");
-	void* lib = dlopen("/usr/local/lib/libacbrnfe64.so", RTLD_LAZY);
-    dlclose(lib);
+    void NFE_ConfigGravarValor(Php::Parameters &params)
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
 
-    //NFE_Versao_t NFE_Versao_h = (NFE_Versao_t)dlsym( lib, "NFE_Versao" );
+        std::string eSessao = params[0];
+        std::string eChave = params[1];
+        std::string sValor = params[2];
+        nfe->_NFE_ConfigGravarValor(eSessao,eChave,sValor);
+        //Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+    }//NFE_ConfigGravarValor
 
-	//int bufferlen = BUFFER_LEN;
-	//char text[BUFFER_LEN];
-	//NFE_Versao_h(&text, &bufferlen);
+};
 
-/*
-	int bufferlen = BUFFER_LEN;
-	char text[BUFFER_LEN];
-
-    void* lib = dlopen("/usr/local/lib/libacbrnfe64.so", RTLD_LAZY);
-    NFE_Versao_t NFE_Versao = (NFE_Versao_t)dlsym( lib, "NFE_Versao");
-
-    //NFE_Versao(&text,&bufferlen);
-    //Php::out << "erro" << std::endl;
-    //Php::out << text << std::endl;
-
-    dlclose(lib);
-    */
-
-    Php::out << "teste2 ok" << std::endl;
-}
+//std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>("/home/billbarsch/Desktop/acbrlibphp/acbrlib.ini","");
+//Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+//return "nada";
 
 /**
  *  tell the compiler that the get_module is a pure C function
@@ -94,12 +82,31 @@ extern "C" {
     {
         // static(!) Php::Extension object that should stay in memory
         // for the entire duration of the process (that's why it's static)
-        static Php::Extension extension("acbrlibphp", "1.0");
-        
-        extension.add<teste1>("Acbrlibphp\\teste1");
-        extension.add<teste2>("Acbrlibphp\\teste2");
+        static Php::Extension myExtension("acbrlibphp", "1.0");
 
-        // return the extension
-        return extension;
+        // description of the class so that PHP knows which methods are accessible
+        Php::Class<AcbrLibPhp> AcbrLibPhp("AcbrLibPhp");
+
+        // register the methods
+        AcbrLibPhp.method<&AcbrLibPhp::__construct>("__construct", {
+            Php::ByVal("eArqConfig", Php::Type::String),
+            Php::ByVal("eChaveCrypt", Php::Type::String)
+        });
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_ConfigGravarValor>("NFE_ConfigGravarValor", {
+            Php::ByVal("eSessao", Php::Type::String),
+            Php::ByVal("eChave", Php::Type::String),
+            Php::ByVal("sValor", Php::Type::String)
+        });
+
+        AcbrLibPhp.method<&AcbrLibPhp::nomeVersao>("nomeVersao");
+
+        // the Example class has one public property
+        //example.property("property1", "xyz", Php::Public);
+
+        // add the class to the extension
+        myExtension.add(std::move(AcbrLibPhp));
+
+        return myExtension;
     }
 }

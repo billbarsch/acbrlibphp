@@ -56,7 +56,7 @@ ACBrNFe::~ACBrNFe() {
 #endif
 }
 
-std::string ACBrNFe::nome() {
+std::string ACBrNFe::_NFE_Nome() {
 	NFE_Nome method;
 
 #if defined(ISWINDOWS)
@@ -72,7 +72,7 @@ std::string ACBrNFe::nome() {
 	return process_result(buffer, bufferLen);
 }
 
-std::string ACBrNFe::versao() {
+std::string ACBrNFe::_NFE_Versao() {
 	NFE_Versao method;
 
 #if defined(ISWINDOWS)
@@ -86,6 +86,19 @@ std::string ACBrNFe::versao() {
 
 	method(buffer.c_str(), &bufferLen);
 	return process_result(buffer, bufferLen);
+}
+
+std::int32_t ACBrNFe::_NFE_ConfigGravarValor(const std::string eSessao, const std::string eChave, const std::string sValor) {
+	NFE_ConfigGravarValor method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_ConfigGravarValor)GetProcAddress(nHandler, "NFE_ConfigGravarValor");
+#else
+	method = (NFE_ConfigGravarValor)dlsym(nHandler, "NFE_ConfigGravarValor");
+#endif
+
+	const int ret = method(eSessao.c_str(),eChave.c_str(), sValor.c_str());
+	check_result(ret);
 }
 
 std::string ACBrNFe::trim(std::string& buffer) const

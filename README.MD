@@ -35,4 +35,4 @@ para liberar todos a se conectarem no x11
 
 ## Local do log de erros do apache:
 
-cat /var/log/apache2/error.log
+`cat /var/log/apache2/error.log`

@@ -1,0 +1,111 @@
+void NomeVersao(Php::Parameters &params)
+{
+    std::string eArqConfig = params[0];
+    std::string eChaveCrypt = params[1];
+    std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>(eArqConfig,eChaveCrypt);
+    //nfe->_NFE_ConfigGravarValor("NFe", "TimeOut", "6000");
+    Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+    //cout << nfe->nome() + " " + nfe->versao() << std::endl;
+}//_NFE_Inicializar
+
+/*
+void _NFE_ConfigGravarValor(Php::Parameters &params)
+{
+    std::string eSessao = params[0];
+    std::string eChave = params[1];
+    std::string sValor = params[2];
+    
+    //std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>(eArqConfig,eChaveCrypt);
+    //Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+    //cout << nfe->nome() + " " + nfe->versao() << std::endl;
+}//_NFE_Inicializar
+*/
+/*
+void teste1()
+{
+    Acbrlibphp AcbrlibClass;
+
+	string sucesso;
+	string erro;
+	string versao;
+	
+    versao = AcbrlibClass.NFE_Versao();
+	sucesso = AcbrlibClass.status;
+    erro = AcbrlibClass.error;
+    //versao = "laaaa";
+    //versao = error.c_str();
+    Php::out << "Sucesso:" << sucesso << "<br>" << std::endl;
+    Php::out << "Erro:" << erro << "<br>" << std::endl;
+    Php::out << "Versao:" << versao << "<br>" << std::endl;
+
+	//AcbrlibClass.NFE_ConfigGravarValor("NFe", "TimeOut", "7700");
+}
+*/
+
+/*
+extern "C" typedef void (*hello_t)( const char* text );
+
+void teste()
+{
+    void* lib = dlopen("./libhello.so", RTLD_LAZY);
+    hello_t hello = (hello_t)dlsym( lib, "hello" );
+
+    hello("World!");
+
+    //Php::out << "terminou!" << std::endl;
+    //dlclose(lib);
+}
+*/
+
+void teste2()
+{
+    putenv("DISPLAY=:0");
+	void* lib = dlopen("/usr/local/lib/libacbrnfe64.so", RTLD_LAZY);
+    dlclose(lib);
+
+    //NFE_Versao_t NFE_Versao_h = (NFE_Versao_t)dlsym( lib, "NFE_Versao" );
+
+	//int bufferlen = BUFFER_LEN;
+	//char text[BUFFER_LEN];
+	//NFE_Versao_h(&text, &bufferlen);
+
+/*
+	int bufferlen = BUFFER_LEN;
+	char text[BUFFER_LEN];
+
+    void* lib = dlopen("/usr/local/lib/libacbrnfe64.so", RTLD_LAZY);
+    NFE_Versao_t NFE_Versao = (NFE_Versao_t)dlsym( lib, "NFE_Versao");
+
+    //NFE_Versao(&text,&bufferlen);
+    //Php::out << "erro" << std::endl;
+    //Php::out << text << std::endl;
+
+    dlclose(lib);
+    */
+
+    Php::out << "teste2 ok" << std::endl;
+}
+
+
+
+
+
+        /*
+        extension.add<NomeVersao>("Acbrlibphp\\NomeVersao", {
+            Php::ByVal("eArqConfig", Php::Type::String),
+            Php::ByVal("eChaveCrypt", Php::Type::String)
+        });
+        */
+
+        /*
+        extension.add<_NFE_ConfigGravarValor>("Acbrlibphp\\NFE_ConfigGravarValor", {
+            Php::ByVal("eSessao", Php::Type::String),
+            Php::ByVal("eChave", Php::Type::String),
+            Php::ByVal("sValor", Php::Type::String)
+        });
+        */
+
+        //extension.add<_NFE_Finalizar>("Acbrlibphp\\NFE_Finalizar");
+
+        //extension.add<teste2>("Acbrlibphp\\teste2");
+        // return the extension
