@@ -7,7 +7,7 @@
 `sudo make tudo`
 
 
-## Este projeto requer a instalacao do PHP-CPP
+## Este projeto requer a instalacao do [PHP-CPP](http://www.php-cpp.com/) 
 
 `sudo apt-get install php-dev`
 
