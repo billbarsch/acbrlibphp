@@ -44,6 +44,8 @@ sera necessario descobrir o local exato para fazer esses procedimentos abaixo
 
 a biblioteca abaixo libacbrnfe64.so deve ser adquirida com o pessoal do projeto [ACBR](https://projetoacbr.com.br/acbrlib/) ou voce pode [compila-la](https://www.youtube.com/watch?v=XJvMr3b6rNo&feature=emb_title) como e mostrado nesse video.
 
+para fins de teste estou disponibilizando uma versao do arquivo temporariamente no [dropbox](https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=0)
+
 
 `cp libacbrnfe64.so /usr/lib/x86_64-linux-gnu` (para copiar a biblioteca para a pasta do sistema)
 
