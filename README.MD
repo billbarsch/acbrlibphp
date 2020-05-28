@@ -35,7 +35,17 @@
 `sudo apt-get install libxslt-dev`
 
 
-## Criar links simbolicos das libs dependencias
+## Criar links simbolicos das libs dependentes
+
+o local onde ficam as bibliotecas varia muito entre os tipos de distribuicoes linux
+as vezes podem estar em `/usr/lib/` outras vezes em `/user/lib/x86_64-linux-gnu`
+sera necessario descobrir o local exato para fazer esses procedimentos abaixo
+
+
+a biblioteca abaixo libacbrnfe64.so deve ser adquirida com o pessoal do projeto [ACBR](https://projetoacbr.com.br/acbrlib/) ou voce pode [compila-la](https://www.youtube.com/watch?v=XJvMr3b6rNo&feature=emb_title) como e mostrado nesse video.
+
+
+`cp libacbrnfe64.so /usr/lib/x86_64-linux-gnu` (para copiar a biblioteca para a pasta do sistema)
 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libxmlsec1.so.1 /usr/lib/x86_64-linux-gnu/libxmlsec1.so`
 
