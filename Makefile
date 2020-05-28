@@ -84,9 +84,9 @@ LINKER				=	g++
 #	with a list of all flags that should be passed to the linker.
 #
 
-COMPILER_FLAGS		=	-Wall -c -O2 -std=c++11 -fpic -o
+COMPILER_FLAGS		=	-Wall -c -O2 -std=c++11 -fpic -o 
 LINKER_FLAGS		=	-shared 
-LINKER_DEPENDENCIES	=	-lphpcpp
+LINKER_DEPENDENCIES	=	-lphpcpp 
 
 
 #
@@ -127,7 +127,7 @@ ${OBJECTS}:
 
 install:
 						${CP} ${EXTENSION} ${EXTENSION_DIR}
-						#${CP} libacbrnfe64.so /usr/local/lib
+						#${CP} libacbrnfe64.so /usr/lib/x86_64-linux-gnu/
 						${CP} ${INI} ${INI_DIR}
 						${PHPENMOD} ${NAME}
 						systemctl restart apache2
@@ -135,7 +135,7 @@ install:
 remove:
 						${PHPDISMOD} ${NAME}
 						${RM} ${EXTENSION_DIR}/${EXTENSION}
-						#${RM} /usr/local/lib/libacbrnfe64.so
+						#${RM} /usr/lib/x86_64-linux-gnu/libacbrnfe64.so
 						${RM} ${INI_DIR}/${INI}
 						systemctl restart apache2
 				

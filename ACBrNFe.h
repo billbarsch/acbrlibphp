@@ -45,8 +45,8 @@ private:
 	std::string process_result(std::string buffer, int buffer_len);
 
 public:
-	ACBrNFe(std::string eArqConfig, std::string e_chave_crypt);
-	ACBrNFe() : ACBrNFe("", "") {}
+	ACBrNFe(const std::string ePathLib, std::string eArqConfig, std::string eChaveCrypt);
+	ACBrNFe() : ACBrNFe("", "", "") {}
 	~ACBrNFe();
 
 	std::string _NFE_Nome();
@@ -56,5 +56,5 @@ public:
 	std::int32_t _NFE_Assinar();
 	std::int32_t _NFE_Validar();
 	std::string _NFE_ObterXml(std::int32_t AIndex);
-	
+
 };

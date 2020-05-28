@@ -29,9 +29,10 @@ public:
     {
         // get self reference as Php::Value object
         Php::Value self(this);
-        std::string eArqConfig = params[0];
-        std::string eChaveCrypt = params[1];
-        nfe = std::make_shared<ACBrNFe>(eArqConfig,eChaveCrypt);
+        std::string ePathLib = params[0];
+        std::string eArqConfig = params[1];
+        std::string eChaveCrypt = params[2];
+        nfe = std::make_shared<ACBrNFe>(ePathLib,eArqConfig,eChaveCrypt);
         // initialize a public property
         //self["property1"] = "xyz";
     }
