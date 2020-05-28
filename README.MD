@@ -1,13 +1,8 @@
-## Instalacao da extensao:
-
-`git clone https://github.com/billbarsch/acbrlibphp.git`
-
-`cd acbrlibphp`
-
-`sudo make tudo`
-
+# AcbrLibPHP
 
 ## Este projeto requer a instalacao do [PHP-CPP](http://www.php-cpp.com/) 
+
+`sudo apt-get update`
 
 `sudo apt-get install php-dev`
 
@@ -18,6 +13,15 @@
 `make`
 
 `sudo make install`
+
+
+## Instalacao da extensao:
+
+`git clone https://github.com/billbarsch/acbrlibphp.git`
+
+`cd acbrlibphp`
+
+`sudo make tudo`
 
 
 ## Instalar no linux:
