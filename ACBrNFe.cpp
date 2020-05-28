@@ -9,7 +9,7 @@
 #include <dlfcn.h>
 #endif
 
-ACBrNFe::ACBrNFe(const std::string eArqConfig, const std::string e_chave_crypt) {
+ACBrNFe::ACBrNFe(const std::string ePathLib, const std::string eArqConfig, const std::string eChaveCrypt) {
 #if defined(ISWINDOWS)
 #if defined(ENVIRONMENT32)
 	nHandler = LoadLibraryW(L"ACBrNFe32.dll");
@@ -18,10 +18,13 @@ ACBrNFe::ACBrNFe(const std::string eArqConfig, const std::string e_chave_crypt) 
 #endif
 #else
 #if defined(ENVIRONMENT32)
-	nHandler = dlopen("libacbrnfe32.so");
+	putenv("DISPLAY=:0");
+	std::string path = ePathLib + "libacbrnfe32.so";
+	nHandler = dlopen(path.c_str(), RTLD_LAZY);
 #else
 	putenv("DISPLAY=:0");
-	nHandler = dlopen("/usr/local/lib/libacbrnfe64.so", RTLD_LAZY);
+	std::string path = ePathLib + "libacbrnfe64.so";
+	nHandler = dlopen(path.c_str(), RTLD_LAZY);
 #endif
 #endif
 
@@ -33,7 +36,7 @@ ACBrNFe::ACBrNFe(const std::string eArqConfig, const std::string e_chave_crypt) 
 	method = (NFE_Inicializar)dlsym(nHandler, "NFE_Inicializar");
 #endif
 
-	const int ret = method(eArqConfig.c_str(), e_chave_crypt.c_str());
+	const int ret = method(eArqConfig.c_str(), eChaveCrypt.c_str());
 	check_result(ret);
 }
 
