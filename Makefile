@@ -28,8 +28,9 @@ NAME				=	acbrlibphp
 #	one for each extension. Use this variable to specify this directory.
 #
 
-INI_DIR				=	/etc/php/7.2/mods-available
+PHPVERSION = $(shell php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
 
+INI_DIR				=	/etc/php/${PHPVERSION}/mods-available
 
 #
 #	The extension dirs
