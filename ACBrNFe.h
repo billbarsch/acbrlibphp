@@ -56,5 +56,7 @@ public:
 	std::int32_t _NFE_Assinar();
 	std::int32_t _NFE_Validar();
 	std::string _NFE_ObterXml(std::int32_t AIndex);
-
+	std::string _NFE_Enviar(std::int32_t ALote, bool Imprimir, bool Sincrono, bool Zipado);
+	std::int32_t _NFE_LimparLista();
+	std::int32_t _NFE_ImprimirPDF();
 };

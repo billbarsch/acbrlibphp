@@ -20,24 +20,6 @@
 `sudo make install`
 
 
-# Ajustes
-
-## Para conseguir ler a dll pela extensao:
-
-executar no terminal: 
-
-`xhost +` 
-
-para liberar todos a se conectarem no x11
-
-
-# Util
-
-## Local do log de erros do apache:
-
-`cat /var/log/apache2/error.log`
-
-
 ## Instalar no linux:
 
 `sudo apt-get install libxml2`
@@ -65,3 +47,20 @@ para liberar todos a se conectarem no x11
 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so`
 
+
+# Ajustes
+
+## Para conseguir ler a dll pela extensao:
+
+executar no terminal: 
+
+`xhost +` 
+
+para liberar todos a se conectarem no x11
+
+
+# Util
+
+## Local do log de erros do apache:
+
+`cat /var/log/apache2/error.log`

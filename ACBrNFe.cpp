@@ -91,6 +91,22 @@ std::string ACBrNFe::_NFE_ObterXml(std::int32_t AIndex) {
 	return process_result(buffer, bufferLen);
 }
 
+std::string ACBrNFe::_NFE_Enviar(std::int32_t ALote, bool Imprimir, bool Sincrono, bool Zipado) {
+	NFE_Enviar method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_Enviar)GetProcAddress(nHandler, "NFE_Enviar");
+#else
+	method = (NFE_Enviar)dlsym(nHandler, "NFE_Enviar");
+#endif
+
+	const std::string buffer(BUFFER_LEN, ' ');
+	int bufferLen = BUFFER_LEN;
+
+	method(ALote, Imprimir,Sincrono,Zipado, buffer.c_str(), &bufferLen);
+	return process_result(buffer, bufferLen);
+}
+
 std::string ACBrNFe::_NFE_Versao() {
 	NFE_Versao method;
 
@@ -130,6 +146,33 @@ std::int32_t ACBrNFe::_NFE_CarregarXML(const std::string eArquivoOuXML) {
 #endif
 
 	const int ret = method(eArquivoOuXML.c_str());
+	check_result(ret);
+}
+
+
+std::int32_t ACBrNFe::_NFE_LimparLista() {
+	NFE_LimparLista method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_LimparLista)GetProcAddress(nHandler, "NFE_LimparLista");
+#else
+	method = (NFE_LimparLista)dlsym(nHandler, "NFE_LimparLista");
+#endif
+
+	const int ret = method();
+	check_result(ret);
+}
+
+std::int32_t ACBrNFe::_NFE_ImprimirPDF() {
+	NFE_ImprimirPDF method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_ImprimirPDF)GetProcAddress(nHandler, "NFE_ImprimirPDF");
+#else
+	method = (NFE_ImprimirPDF)dlsym(nHandler, "NFE_ImprimirPDF");
+#endif
+
+	const int ret = method();
 	check_result(ret);
 }
 

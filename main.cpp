@@ -71,11 +71,22 @@ public:
 
     void NFE_Assinar()
     {
-        // get self reference as Php::Value object
         Php::Value self(this);
-
         nfe->_NFE_Assinar();
     }//NFE_Assinar
+
+    void NFE_LimparLista()
+    {
+        Php::Value self(this);
+        nfe->_NFE_LimparLista();
+    }//NFE_LimparLista
+
+    void NFE_ImprimirPDF()
+    {
+        Php::Value self(this);
+        nfe->_NFE_ImprimirPDF();
+    }//NFE_ImprimirPDF
+
 
     void NFE_Validar()
     {
@@ -87,17 +98,20 @@ public:
 
     Php::Value NFE_ObterXml(Php::Parameters &params)
     {
-        // get self reference as Php::Value object
         Php::Value self(this);
-
         std::int32_t AIndex = params[0];
-
-        // overwrite the property
-        //self["property1"] = "abc";
-
-        //Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
         return nfe->_NFE_ObterXml(AIndex);
     }//NFE_ObterXml
+
+    Php::Value NFE_Enviar(Php::Parameters &params)
+    {
+        Php::Value self(this);
+        std::int32_t ALote = params[0];
+        bool Imprimir = params[1];
+        bool Sincrono = params[2];
+        bool Zipado = params[3];
+        return nfe->_NFE_Enviar(ALote, Imprimir,Sincrono,Zipado);
+    }//NFE_Enviar
 
 };
 
@@ -140,13 +154,24 @@ extern "C" {
 
         AcbrLibPhp.method<&AcbrLibPhp::NFE_Assinar>("NFE_Assinar");
 
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_LimparLista>("NFE_LimparLista");
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_ImprimirPDF>("NFE_ImprimirPDF");
+
         AcbrLibPhp.method<&AcbrLibPhp::NFE_Validar>("NFE_Validar");
 
-        AcbrLibPhp.method<&AcbrLibPhp::NFE_ObterXml>("NFE_ObterXml");
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_ObterXml>("NFE_ObterXml",{
+            Php::ByVal("AIndex", Php::Type::Numeric)
+        });
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_Enviar>("NFE_Enviar",{
+            Php::ByVal("ALote", Php::Type::Numeric),
+            Php::ByVal("Imprimir", Php::Type::Bool),
+            Php::ByVal("Sincrono", Php::Type::Bool),
+            Php::ByVal("Zipado", Php::Type::Bool)
+        });
 
         AcbrLibPhp.method<&AcbrLibPhp::nomeVersao>("nomeVersao");
-
-        
 
         // the Example class has one public property
         //example.property("property1", "xyz", Php::Public);
