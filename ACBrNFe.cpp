@@ -72,6 +72,22 @@ std::string ACBrNFe::_NFE_Nome() {
 	return process_result(buffer, bufferLen);
 }
 
+std::string ACBrNFe::_NFE_ObterXml(std::int32_t AIndex) {
+	NFE_ObterXml method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_ObterXml)GetProcAddress(nHandler, "NFE_ObterXml");
+#else
+	method = (NFE_ObterXml)dlsym(nHandler, "NFE_ObterXml");
+#endif
+
+	const std::string buffer(BUFFER_LEN, ' ');
+	int bufferLen = BUFFER_LEN;
+
+	method(AIndex, buffer.c_str(), &bufferLen);
+	return process_result(buffer, bufferLen);
+}
+
 std::string ACBrNFe::_NFE_Versao() {
 	NFE_Versao method;
 
@@ -100,6 +116,46 @@ std::int32_t ACBrNFe::_NFE_ConfigGravarValor(const std::string eSessao, const st
 	const int ret = method(eSessao.c_str(),eChave.c_str(), sValor.c_str());
 	check_result(ret);
 }
+
+std::int32_t ACBrNFe::_NFE_CarregarXML(const std::string eArquivoOuXML) {
+	NFE_CarregarXML method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_CarregarXML)GetProcAddress(nHandler, "NFE_CarregarXML");
+#else
+	method = (NFE_CarregarXML)dlsym(nHandler, "NFE_CarregarXML");
+#endif
+
+	const int ret = method(eArquivoOuXML.c_str());
+	check_result(ret);
+}
+
+std::int32_t ACBrNFe::_NFE_Assinar() {
+	NFE_Assinar method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_Assinar)GetProcAddress(nHandler, "NFE_Assinar");
+#else
+	method = (NFE_Assinar)dlsym(nHandler, "NFE_Assinar");
+#endif
+
+	const int ret = method();
+	check_result(ret);
+}
+
+std::int32_t ACBrNFe::_NFE_Validar() {
+	NFE_Validar method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_Validar)GetProcAddress(nHandler, "NFE_Validar");
+#else
+	method = (NFE_Validar)dlsym(nHandler, "NFE_Validar");
+#endif
+
+	const int ret = method();
+	check_result(ret);
+}
+
 
 std::string ACBrNFe::trim(std::string& buffer) const
 {

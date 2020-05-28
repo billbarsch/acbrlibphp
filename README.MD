@@ -36,3 +36,15 @@ para liberar todos a se conectarem no x11
 ## Local do log de erros do apache:
 
 `cat /var/log/apache2/error.log`
+
+
+## Instalar no linux:
+
+`sudo apt-get install libxml2`
+
+`sudo apt-get install openssl`
+
+`sudo apt-get install libxmlsec1-openssl`
+
+`sudo apt-get install libxslt-dev`
+

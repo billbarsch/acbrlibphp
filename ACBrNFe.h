@@ -52,4 +52,9 @@ public:
 	std::string _NFE_Nome();
 	std::string _NFE_Versao();
 	std::int32_t _NFE_ConfigGravarValor(std::string eSessao, std::string eChave, std::string sValor);
+	std::int32_t _NFE_CarregarXML(std::string eArquivoOuXML);
+	std::int32_t _NFE_Assinar();
+	std::int32_t _NFE_Validar();
+	std::string _NFE_ObterXml(std::int32_t AIndex);
+	
 };

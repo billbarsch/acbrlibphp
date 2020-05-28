@@ -19,7 +19,6 @@
 #
 
 NAME				=	acbrlibphp
-#NOMELIBTESTE        =   hello
 
 #
 #	Php.ini directories
@@ -52,7 +51,6 @@ EXTENSION_DIR		=	$(shell php-config --extension-dir)
 #
 
 EXTENSION 			=	${NAME}.so
-#libhello 			=	lib${NOMELIBTESTE}.so
 INI 				=	${NAME}.ini
 
 
@@ -121,8 +119,6 @@ OBJECTS				=	$(SOURCES:%.cpp=%.o)
 
 all:					${OBJECTS} ${EXTENSION}
 
-#						${COMPILER} -shared -fPIC -o ${libhello} ${NOMELIBTESTE}.cpp
-
 ${EXTENSION}:			${OBJECTS}
 						${LINKER} ${LINKER_FLAGS} -o $@ ${OBJECTS} ${LINKER_DEPENDENCIES}
 
@@ -131,7 +127,6 @@ ${OBJECTS}:
 
 install:
 						${CP} ${EXTENSION} ${EXTENSION_DIR}
-#						${CP} ${libhello} ${EXTENSION_DIR}
 						#${CP} libacbrnfe64.so /usr/local/lib
 						${CP} ${INI} ${INI_DIR}
 						${PHPENMOD} ${NAME}
@@ -140,14 +135,12 @@ install:
 remove:
 						${PHPDISMOD} ${NAME}
 						${RM} ${EXTENSION_DIR}/${EXTENSION}
-#						${RM} ${EXTENSION_DIR}/${libhello}
 						#${RM} /usr/local/lib/libacbrnfe64.so
 						${RM} ${INI_DIR}/${INI}
 						systemctl restart apache2
 				
 clean:
 						${RM} ${EXTENSION} ${OBJECTS}
-#						${RM} ${libhello}
 
 tudo:
 						make remove

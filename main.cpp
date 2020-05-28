@@ -35,7 +35,7 @@ public:
         // initialize a public property
         //self["property1"] = "xyz";
     }
-    
+
     void nomeVersao()
     {
         // get self reference as Php::Value object
@@ -57,14 +57,48 @@ public:
         std::string eChave = params[1];
         std::string sValor = params[2];
         nfe->_NFE_ConfigGravarValor(eSessao,eChave,sValor);
-        //Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
     }//NFE_ConfigGravarValor
 
-};
+    void NFE_CarregarXML(Php::Parameters &params)
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
 
-//std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>("/home/billbarsch/Desktop/acbrlibphp/acbrlib.ini","");
-//Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
-//return "nada";
+        std::string eArquivoOuXML = params[0];
+        nfe->_NFE_CarregarXML(eArquivoOuXML);
+    }//NFE_CarregarXML
+
+    void NFE_Assinar()
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
+
+        nfe->_NFE_Assinar();
+    }//NFE_Assinar
+
+    void NFE_Validar()
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
+
+        nfe->_NFE_Validar();
+    }//NFE_Validar
+
+    Php::Value NFE_ObterXml(Php::Parameters &params)
+    {
+        // get self reference as Php::Value object
+        Php::Value self(this);
+
+        std::int32_t AIndex = params[0];
+
+        // overwrite the property
+        //self["property1"] = "abc";
+
+        //Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+        return nfe->_NFE_ObterXml(AIndex);
+    }//NFE_ObterXml
+
+};
 
 /**
  *  tell the compiler that the get_module is a pure C function
@@ -99,7 +133,19 @@ extern "C" {
             Php::ByVal("sValor", Php::Type::String)
         });
 
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_CarregarXML>("NFE_CarregarXML", {
+            Php::ByVal("eArquivoOuXML", Php::Type::String)
+        });
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_Assinar>("NFE_Assinar");
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_Validar>("NFE_Validar");
+
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_ObterXml>("NFE_ObterXml");
+
         AcbrLibPhp.method<&AcbrLibPhp::nomeVersao>("nomeVersao");
+
+        
 
         // the Example class has one public property
         //example.property("property1", "xyz", Php::Public);

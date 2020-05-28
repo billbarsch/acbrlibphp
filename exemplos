@@ -1,3 +1,9 @@
+//std::shared_ptr<ACBrNFe> nfe = std::make_shared<ACBrNFe>("/home/billbarsch/Desktop/acbrlibphp/acbrlib.ini","");
+//Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
+//return "nada";
+
+
+
 void NomeVersao(Php::Parameters &params)
 {
     std::string eArqConfig = params[0];
