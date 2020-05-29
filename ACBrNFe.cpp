@@ -75,6 +75,22 @@ std::string ACBrNFe::_NFE_Nome() {
 	return process_result(buffer, bufferLen);
 }
 
+std::string ACBrNFe::_NFE_Versao() {
+	NFE_Versao method;
+
+#if defined(ISWINDOWS)
+	method = (NFE_Versao)GetProcAddress(nHandler, "NFE_Versao");
+#else
+	method = (NFE_Versao)dlsym(nHandler, "NFE_Versao");
+#endif
+
+	const std::string buffer(BUFFER_LEN, ' ');
+	int bufferLen = BUFFER_LEN;
+
+	method(buffer.c_str(), &bufferLen);
+	return process_result(buffer, bufferLen);
+}
+
 std::string ACBrNFe::_NFE_ObterXml(std::int32_t AIndex) {
 	NFE_ObterXml method;
 
@@ -107,22 +123,6 @@ std::string ACBrNFe::_NFE_Enviar(std::int32_t ALote, bool Imprimir, bool Sincron
 	return process_result(buffer, bufferLen);
 }
 
-std::string ACBrNFe::_NFE_Versao() {
-	NFE_Versao method;
-
-#if defined(ISWINDOWS)
-	method = (NFE_Versao)GetProcAddress(nHandler, "NFE_Versao");
-#else
-	method = (NFE_Versao)dlsym(nHandler, "NFE_Versao");
-#endif
-
-	const std::string buffer(BUFFER_LEN, ' ');
-	int bufferLen = BUFFER_LEN;
-
-	method(buffer.c_str(), &bufferLen);
-	return process_result(buffer, bufferLen);
-}
-
 std::int32_t ACBrNFe::_NFE_ConfigGravarValor(const std::string eSessao, const std::string eChave, const std::string sValor) {
 	NFE_ConfigGravarValor method;
 
@@ -134,6 +134,7 @@ std::int32_t ACBrNFe::_NFE_ConfigGravarValor(const std::string eSessao, const st
 
 	const int ret = method(eSessao.c_str(),eChave.c_str(), sValor.c_str());
 	check_result(ret);
+	return ret;
 }
 
 std::int32_t ACBrNFe::_NFE_CarregarXML(const std::string eArquivoOuXML) {
@@ -147,6 +148,7 @@ std::int32_t ACBrNFe::_NFE_CarregarXML(const std::string eArquivoOuXML) {
 
 	const int ret = method(eArquivoOuXML.c_str());
 	check_result(ret);
+	return ret;
 }
 
 
@@ -161,6 +163,7 @@ std::int32_t ACBrNFe::_NFE_LimparLista() {
 
 	const int ret = method();
 	check_result(ret);
+	return ret;
 }
 
 std::int32_t ACBrNFe::_NFE_ImprimirPDF() {
@@ -174,6 +177,7 @@ std::int32_t ACBrNFe::_NFE_ImprimirPDF() {
 
 	const int ret = method();
 	check_result(ret);
+	return ret;
 }
 
 std::int32_t ACBrNFe::_NFE_Assinar() {
@@ -187,6 +191,7 @@ std::int32_t ACBrNFe::_NFE_Assinar() {
 
 	const int ret = method();
 	check_result(ret);
+	return ret;
 }
 
 std::int32_t ACBrNFe::_NFE_Validar() {
@@ -200,6 +205,7 @@ std::int32_t ACBrNFe::_NFE_Validar() {
 
 	const int ret = method();
 	check_result(ret);
+	return ret;
 }
 
 

@@ -37,6 +37,14 @@ public:
         //self["property1"] = "xyz";
     }
 
+
+    Php::Value NFE_Versao()
+    {
+        Php::Value self(this);
+        return nfe->_NFE_Versao();
+    }//NFE_ObterXml
+
+    /*
     void nomeVersao()
     {
         // get self reference as Php::Value object
@@ -48,7 +56,8 @@ public:
         Php::out << nfe->_NFE_Nome() + " " + nfe->_NFE_Versao() << "<br>" << std::endl;
 
     }
-
+    */
+    
     void NFE_ConfigGravarValor(Php::Parameters &params)
     {
         // get self reference as Php::Value object
@@ -171,7 +180,7 @@ extern "C" {
             Php::ByVal("Zipado", Php::Type::Bool)
         });
 
-        AcbrLibPhp.method<&AcbrLibPhp::nomeVersao>("nomeVersao");
+        AcbrLibPhp.method<&AcbrLibPhp::NFE_Versao>("NFE_Versao");
 
         // the Example class has one public property
         //example.property("property1", "xyz", Php::Public);
