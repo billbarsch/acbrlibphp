@@ -37,10 +37,10 @@
 
 ## Criar links simbolicos das libs dependentes
 
-o local onde ficam as bibliotecas varia muito entre os tipos de distribuicoes linux
-as vezes podem estar em `/usr/lib/` outras vezes em `/user/lib/x86_64-linux-gnu`
-sera necessario descobrir o local exato para fazer esses procedimentos abaixo
+sera necessario descobrir o local onde estao as dependencias 
+localize uma delas para saber em qual pasta estao os arquivos
 
+`find /usr -name "libxml2.so*"`
 
 a biblioteca abaixo libacbrnfe64.so deve ser adquirida com o pessoal do projeto [ACBR](https://projetoacbr.com.br/acbrlib/) ou voce pode [compila-la](https://www.youtube.com/watch?v=XJvMr3b6rNo&feature=emb_title) como e mostrado nesse video.
 
