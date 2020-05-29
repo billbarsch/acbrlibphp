@@ -25,6 +25,9 @@
 
 `sudo apt-get install libxslt-dev`
 
+`sudo apt-get install libgtk2.0-0`
+
+`sudo apt-get install xvfb`
 
 ## Criar links simbolicos das libs dependentes
 
@@ -66,6 +69,10 @@ para fins de teste estou disponibilizando uma versao do arquivo temporariamente 
 
 
 # Ajustes
+
+## Executar o modo grafico virtual
+
+`Xvfb :1` (para executar o modo grafico no servidor)
 
 ## Para conseguir ler a dll pela extensao:
 
