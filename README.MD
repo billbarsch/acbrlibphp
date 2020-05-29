@@ -15,16 +15,7 @@
 `sudo make install`
 
 
-## Instalacao da extensao:
-
-`git clone https://github.com/billbarsch/acbrlibphp.git`
-
-`cd acbrlibphp`
-
-`sudo make tudo`
-
-
-## Instalar no linux:
+## Instalar dependencias:
 
 `sudo apt-get install libxml2`
 
@@ -63,6 +54,15 @@ para fins de teste estou disponibilizando uma versao do arquivo temporariamente 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/x86_64-linux-gnu/libssl.so`
 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so`
+
+
+## Instalacao da extensao para o php (este projeto):
+
+`git clone https://github.com/billbarsch/acbrlibphp.git`
+
+`cd acbrlibphp`
+
+`sudo make tudo`
 
 
 # Ajustes
