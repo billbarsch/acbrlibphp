@@ -18,11 +18,11 @@ ACBrNFe::ACBrNFe(const std::string ePathLib, const std::string eArqConfig, const
 #endif
 #else
 #if defined(ENVIRONMENT32)
-	putenv("DISPLAY=:0");
+	putenv((char *)"DISPLAY=:0");
 	std::string path = ePathLib + "libacbrnfe32.so";
 	nHandler = dlopen(path.c_str(), RTLD_LAZY);
 #else
-	putenv("DISPLAY=:0");
+	putenv((char *)"DISPLAY=:0");
 	std::string path = ePathLib + "libacbrnfe64.so";
 	nHandler = dlopen(path.c_str(), RTLD_LAZY);
 #endif
