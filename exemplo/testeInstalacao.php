@@ -8,4 +8,4 @@ $acbrlibphp = new AcbrLibPhp("/usr/lib/x86_64-linux-gnu/","/var/www/html/acbrlib
 $acbrlibphp->NFE_ConfigGravarValor("Principal", "LogPath", "/var/www/html/"); //esta pasta requer permissoes de escrita para o usuario www-data do php
 $acbrlibphp->NFE_ConfigGravarValor("Principal", "LogNivel", "4"); //4 - Paranoico;
 
-$acbrlibphp->NFE_Versao();
+echo $acbrlibphp->NFE_Versao();
