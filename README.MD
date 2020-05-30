@@ -1,10 +1,40 @@
 # AcbrLibPHP
 
+## Script automatico de compilacao e instalacao
+
+`wget -O install.sh https://raw.githubusercontent.com/billbarsch/acbrlibphp/master/install.sh`
+
+`sudo chmod +x install.sh`
+
+`sudo ./install.sh`
+
+
+## Instalar dependencias:
+
+`sudo apt install git -y`
+
+`sudo apt install php-dev -y`
+
+`sudo apt install libxml2 -y`
+
+`sudo apt install openssl -y`
+
+`sudo apt install libxmlsec1-openssl -y`
+
+`sudo apt install libxslt-dev -y`
+
+`sudo apt install libgtk2.0-0 -y`
+
+`sudo apt install libcanberra-gtk-module -y`
+
+`sudo apt install apache2 -y`
+
+`sudo apt install php libapache2-mod-php -y`
+
+`sudo apt install xvfb -y`
+
+
 ## Este projeto requer a instalacao do [PHP-CPP](http://www.php-cpp.com/) 
-
-`sudo apt-get update`
-
-`sudo apt-get install php-dev`
 
 `git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git`
 
@@ -14,20 +44,6 @@
 
 `sudo make install`
 
-
-## Instalar dependencias:
-
-`sudo apt-get install libxml2`
-
-`sudo apt-get install openssl`
-
-`sudo apt-get install libxmlsec1-openssl`
-
-`sudo apt-get install libxslt-dev`
-
-`sudo apt-get install libgtk2.0-0`
-
-`sudo apt-get install xvfb`
 
 ## Criar links simbolicos das libs dependentes
 
@@ -40,9 +56,11 @@ a biblioteca abaixo libacbrnfe64.so deve ser adquirida com o pessoal do projeto 
 
 para fins de teste estou disponibilizando uma versao do arquivo temporariamente no [dropbox](https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=0)
 
-`sudo wget -O libacbrnfe64.so https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=1` (para baixar a biblioteca)
+`sudo wget -O libacbrnfe64.so https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=1` 
+(para baixar a biblioteca)
 
-`sudo cp libacbrnfe64.so /usr/lib/x86_64-linux-gnu` (para copiar a biblioteca para a pasta do sistema)
+`sudo cp libacbrnfe64.so /usr/lib/x86_64-linux-gnu` 
+(para copiar a biblioteca para a pasta do sistema)
 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libxmlsec1.so.1 /usr/lib/x86_64-linux-gnu/libxmlsec1.so`
 
@@ -70,17 +88,15 @@ para fins de teste estou disponibilizando uma versao do arquivo temporariamente 
 
 # Ajustes
 
-## Executar o modo grafico virtual
+## Ativar modo grafico
 
-`Xvfb :1` (para executar o modo grafico no servidor)
+### Caso esteja executando em SERVIDOR:
 
-## Para conseguir ler a dll pela extensao:
+`Xvfb :99 &`
 
-executar no terminal: 
+### Caso esteja executando em DESKTOP:
 
 `xhost +` 
-
-para liberar todos a se conectarem no x11
 
 
 # Util
