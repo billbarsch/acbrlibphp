@@ -1,6 +1,7 @@
 # AcbrLibPHP
 
 ## Script automatico de compilacao e instalacao
+(testado em Ubuntu 18 e Ubuntu 20 apenas)
 
 `wget -O install.sh https://raw.githubusercontent.com/billbarsch/acbrlibphp/master/install.sh`
 
