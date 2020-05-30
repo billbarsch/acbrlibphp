@@ -10,6 +10,7 @@ apt install libgtk2.0-0 -y
 apt install libcanberra-gtk-module -y
 apt install apache2 -y
 apt install php libapache2-mod-php -y
+apt install xvfb -y
 git clone https://github.com/CopernicaMarketingSoftware/PHP-CPP.git
 cd PHP-CPP
 make
@@ -30,3 +31,4 @@ sudo make tudo
 cp ./exemplo/teste.php /var/www/html
 chown -R www-data:www-data /var/www/html
 cd ..
+Xvfb :99 &
