@@ -44,6 +44,8 @@
 
 `sudo make install`
 
+`cd ..`
+
 
 ## Criar links simbolicos das libs dependentes
 
@@ -57,10 +59,8 @@ a biblioteca abaixo libacbrnfe64.so deve ser adquirida com o pessoal do projeto 
 para fins de teste estou disponibilizando uma versao do arquivo temporariamente no [dropbox](https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=0)
 
 `sudo wget -O libacbrnfe64.so https://www.dropbox.com/s/51jrad0bm9rp627/libacbrnfe64.so?dl=1` 
-(para baixar a biblioteca)
 
 `sudo cp libacbrnfe64.so /usr/lib/x86_64-linux-gnu` 
-(para copiar a biblioteca para a pasta do sistema)
 
 `sudo ln -s /usr/lib/x86_64-linux-gnu/libxmlsec1.so.1 /usr/lib/x86_64-linux-gnu/libxmlsec1.so`
 
@@ -85,6 +85,7 @@ para fins de teste estou disponibilizando uma versao do arquivo temporariamente 
 
 `sudo make tudo`
 
+`cd ..`
 
 # Ajustes
 
