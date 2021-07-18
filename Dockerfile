@@ -102,5 +102,6 @@ RUN chown -R www-data:www-data /var/www/html
 
 #CMD ["Xvfb",":99","&"]
 EXPOSE 80
-CMD Xvfb :99 &; service apache2 start; sleep infinity
+#CMD Xvfb :99 &; service apache2 start; sleep infinity
 #CMD [ "sleep", "infinity" ]
+ENTRYPOINT ["/home/acbrlibphp/start.sh"]
