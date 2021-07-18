@@ -1,5 +1,6 @@
 #!/bin/bash
 Xvfb :99 &
-service apache2 start &
-sleep infinity
+/usr/sbin/apache2 -D FOREGROUND
+#service apache2 start &
+#sleep infinity
 #/bin/bash
