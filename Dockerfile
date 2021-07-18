@@ -102,5 +102,5 @@ RUN chown -R www-data:www-data /var/www/html
 
 #CMD ["Xvfb",":99","&"]
 EXPOSE 80
-CMD apachectl -D FOREGROUND
+CMD Xvfb :99 & apachectl -D FOREGROUND
 #CMD [ "sleep", "infinity" ]
