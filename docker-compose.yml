@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  acbrlibphpdev:
+    build: .
+    container_name: acbrlibphpdev
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+    #depends_on: 
+    #  - acbrlibphpdevdb
+    networks:
+      backend:
+        aliases:
+          - acbrlibphpdev
+
+networks:
+  backend:
+    name: acbrlibphpnetwork

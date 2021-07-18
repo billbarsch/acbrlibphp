@@ -131,14 +131,14 @@ install:
 						#${CP} libacbrnfe64.so /usr/lib/x86_64-linux-gnu/
 						${CP} ${INI} ${INI_DIR}
 						${PHPENMOD} ${NAME}
-						systemctl restart apache2
+						service apache2 reload
 
 remove:
 						${PHPDISMOD} ${NAME}
 						${RM} ${EXTENSION_DIR}/${EXTENSION}
 						#${RM} /usr/lib/x86_64-linux-gnu/libacbrnfe64.so
 						${RM} ${INI_DIR}/${INI}
-						systemctl restart apache2
+						service apache2 reload
 				
 clean:
 						${RM} ${EXTENSION} ${OBJECTS}

@@ -1,0 +1,15 @@
+{
+	"name": "acbrlibphp",
+	"workspaceFolder": "/var/www/html",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "acbrlibphpdev",
+	"extensions": [
+		"coenraads.bracket-pair-colorizer",
+		"gerane.theme-dark-dracula",
+		"irongeek.vscode-env",
+		"pkief.material-icon-theme",
+		"derek-nextty.openapi-viewer",
+		"ms-azuretools.vscode-docker",
+	],
+	"shutdownAction": "stopCompose"
+}
