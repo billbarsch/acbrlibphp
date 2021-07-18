@@ -133,6 +133,13 @@ install:
 						${PHPENMOD} ${NAME}
 						service apache2 reload
 
+installdocker:
+						${CP} ${EXTENSION} ${EXTENSION_DIR}
+						#${CP} libacbrnfe64.so /usr/lib/x86_64-linux-gnu/
+						${CP} ${INI} ${INI_DIR}
+						${PHPENMOD} ${NAME}
+						service apache2 start
+
 remove:
 						${PHPDISMOD} ${NAME}
 						${RM} ${EXTENSION_DIR}/${EXTENSION}
@@ -148,3 +155,9 @@ tudo:
 						make clean
 						make
 						make install
+
+tudodocker:
+						make remove
+						make clean
+						make
+						make installdocker

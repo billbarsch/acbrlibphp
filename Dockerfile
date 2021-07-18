@@ -91,12 +91,12 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libxml2.so.2 /usr/lib/x86_64-linux-gnu/libxm
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/x86_64-linux-gnu/libssl.so
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so
 
-RUN git clone https://github.com/billbarsch/acbrlibphp.git
-WORKDIR /home/acbrlibphp
-RUN make tudo
+#RUN git clone https://github.com/billbarsch/acbrlibphp.git
+#WORKDIR /home/acbrlibphp
+#RUN make tudodocker
 
-RUN cp /home/acbrlibphp/exemplo/teste.php /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+#RUN cp /home/acbrlibphp/exemplo/teste.php /var/www/html
+#RUN chown -R www-data:www-data /var/www/html
 
 #CMD ["Xvfb",":99","&"]
 CMD [ "sleep", "infinity" ]
