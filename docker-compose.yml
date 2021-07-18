@@ -6,9 +6,8 @@ services:
     container_name: acbrlibphpdev
     ports:
       - "80:80"
-      - "443:443"
     volumes:
-      - .:/var/www/html
+      - .:/var/www/html2
     #depends_on: 
     #  - acbrlibphpdevdb
     networks:

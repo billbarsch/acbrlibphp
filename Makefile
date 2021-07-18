@@ -155,7 +155,3 @@ tudo:
 						make clean
 						make
 						make install
-
-tudodocker:
-						make
-						make installdocker
