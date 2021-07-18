@@ -91,7 +91,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libxml2.so.2 /usr/lib/x86_64-linux-gnu/libxm
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/x86_64-linux-gnu/libssl.so
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so
 
-RUN git clone https://github.com/billbarsch/acbrlibphp.git | echo "8"
+RUN git clone https://github.com/billbarsch/acbrlibphp.git | echo "9"
 WORKDIR /home/acbrlibphp
 RUN make
 RUN make installdocker
@@ -104,4 +104,5 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80
 #CMD Xvfb :99 & apachectl -D FOREGROUND
 #CMD [ "sleep", "infinity" ]
+RUN chmod 777 /home/acbrlibphp/start.sh
 CMD [ "/home/acbrlibphp/start.sh" ]
