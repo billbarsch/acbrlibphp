@@ -91,7 +91,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libxml2.so.2 /usr/lib/x86_64-linux-gnu/libxm
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0 /usr/lib/x86_64-linux-gnu/libssl.so
 #RUN ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 /usr/lib/x86_64-linux-gnu/libcrypto.so
 
-RUN git clone https://github.com/billbarsch/acbrlibphp.git | echo "5"
+RUN git clone https://github.com/billbarsch/acbrlibphp.git | echo "6"
 WORKDIR /home/acbrlibphp
 RUN make
 RUN make installdocker
