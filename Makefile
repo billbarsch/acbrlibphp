@@ -157,7 +157,5 @@ tudo:
 						make install
 
 tudodocker:
-						make remove
-						make clean
 						make
 						make installdocker
