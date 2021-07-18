@@ -138,7 +138,6 @@ installdocker:
 						#${CP} libacbrnfe64.so /usr/lib/x86_64-linux-gnu/
 						${CP} ${INI} ${INI_DIR}
 						${PHPENMOD} ${NAME}
-						service apache2 start
 
 remove:
 						${PHPDISMOD} ${NAME}
