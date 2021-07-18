@@ -100,7 +100,6 @@ RUN rm /var/www/html/index.html
 RUN cp /home/acbrlibphp/exemplo/teste.php /var/www/html/index.php
 RUN chown -R www-data:www-data /var/www/html
 
-#CMD ["Xvfb",":99","&"]
 EXPOSE 80
 #CMD Xvfb :99 &; service apache2 start; sleep infinity
 #CMD [ "sleep", "infinity" ]
